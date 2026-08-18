@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mengarahkan...</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #374151;
+      text-align: center;
+    }
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 4px solid #e5e7eb;
+      border-top-color: #2563eb;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 16px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <p id="msg">Mengarahkan ke halaman tujuan...</p>
+
+  <script>
+    const redirects = {
+      "web": "https://lupis.calk.my.id",
+      "performance": "https://github.com/haikal-adnan/lupis-engine-benchmarking",
+      "platformer": "https://lupis.calk.my.id/play/pixel-adventure",
+      "vn": "https://lupis.calk.my.id/play/my-vn",
+      "topdown": "https://lupis.calk.my.id/play/kayuh-baimbai"
+    };
+
+    const defaultUrl = "https://google.com";
+
+    const params = new URLSearchParams(window.location.search);
+    const key = (params.get('go') || window.location.hash.replace('#', '')).toLowerCase();
+
+    const targetUrl = redirects[key] || defaultUrl;
+
+    window.location.replace(targetUrl);
+  </script>
+</body>
+</html>
